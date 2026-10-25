@@ -1,0 +1,17 @@
+{
+  "name": "safeops-contracts",
+  "version": "1.0.0",
+  "description": "SafeOps BOT smart contracts for contract admin and permission inspection",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:bohr": "hardhat run scripts/deploy.js --network bohr",
+    "deploy:local": "hardhat run scripts/deploy.js --network hardhat"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.10"
+  }
+}
