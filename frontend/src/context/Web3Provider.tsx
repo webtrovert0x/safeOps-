@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
-import { bohrTestnet } from "@/config/bohr";
+import { botchain } from "@/config/botchain";
 
 export const projectId =
   process.env.NEXT_PUBLIC_REOWN_PROJECT_ID ||
@@ -15,12 +15,12 @@ export const projectId =
 const metadata = {
   name: "SafeOps BOT",
   description: "Contract Admin and Permission Inspector - Governance & Control Auditing",
-  url: "https://safeops.bohr.life",
+  url: "https://scan.botchain.ai",
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
 export const wagmiAdapter = new WagmiAdapter({
-  networks: [bohrTestnet],
+  networks: [botchain],
   projectId,
   ssr: true,
 });
@@ -28,7 +28,7 @@ export const wagmiAdapter = new WagmiAdapter({
 if (typeof window !== "undefined") {
   createAppKit({
     adapters: [wagmiAdapter],
-    networks: [bohrTestnet],
+    networks: [botchain],
     projectId,
     metadata,
     themeMode: "dark",

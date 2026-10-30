@@ -1,5 +1,5 @@
 import { createPublicClient, http, getAddress, isAddress } from "viem";
-import { bohrTestnet } from "@/config/bohr";
+import { botchain } from "@/config/botchain";
 
 export interface AdminAccount {
   address: string;
@@ -117,9 +117,14 @@ export async function inspectContractPermissions(
   rpcUrl?: string
 ): Promise<PermissionReport> {
   const normalizedTarget = getAddress(targetAddress);
+  const rpc = (rpcUrl || process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.botchain.ai").replace(/\/+$/, "");
   const client = createPublicClient({
-    chain: bohrTestnet,
-    transport: http(rpcUrl || process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.bohr.life"),
+    chain: botchain,
+    transport: http(rpc, {
+      timeout: 30_000,
+      retryCount: 3,
+      retryDelay: 1000,
+    }),
   });
 
   const findings: PermissionFinding[] = [];

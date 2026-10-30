@@ -36,13 +36,13 @@ import {
 
 const REGISTRY_ADDRESS =
   (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-    "0x00457ca5D64120aBf883277028B0e8DA1b7A2703") as `0x${string}`;
+    "0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974") as `0x${string}`;
 
 const DEMO_PRESETS = [
   {
-    name: "SafeOpsRegistry (Live on Bohr)",
+    name: "SafeOpsRegistry (Botchain Mainnet)",
     address: REGISTRY_ADDRESS,
-    desc: "The active on-chain SafeOps permission registry contract on Bohr Chain.",
+    desc: "The active on-chain SafeOps permission registry contract on Botchain Mainnet.",
   },
   {
     name: "Single-EOA Upgradeable Protocol (Discrepancy Demo)",
@@ -106,7 +106,7 @@ export default function Home() {
       // Step 1: Optional On-Chain Check Record (Gas-Only)
       if (recordOnChain) {
         if (!isConnected) {
-          throw new Error("Please connect your Web3 wallet to record this inspection on Bohr Chain.");
+          throw new Error("Please connect your Web3 wallet to record this inspection on Botchain Mainnet.");
         }
         setAnalysisStep("Broadcasting gas-only recordCheck() to SafeOpsRegistry.sol...");
         const hash = await writeContractAsync({
@@ -116,7 +116,7 @@ export default function Home() {
           args: [normalized, "SafeOps Web Inspector Query"],
         });
         setOnChainTxHash(hash);
-        setAnalysisStep("Transaction submitted. Waiting for Bohr block confirmation...");
+        setAnalysisStep("Transaction submitted. Waiting for Botchain Mainnet block confirmation...");
       }
 
       // Step 2: In-depth permission analysis
@@ -186,11 +186,14 @@ export default function Home() {
       {/* Top Navigation */}
       <header className="border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 shrink-0">
             <img
               src="/logo.png"
               alt="SafeOps BOT"
-              className="h-11 w-11 rounded-xl object-cover border border-cyan-500/40 shadow-lg shadow-cyan-500/20"
+              width={44}
+              height={44}
+              style={{ width: "44px", height: "44px", maxWidth: "44px", maxHeight: "44px" }}
+              className="h-11 w-11 rounded-xl object-cover border border-cyan-500/40 shadow-lg shadow-cyan-500/20 shrink-0"
             />
             <div>
               <div className="flex items-center space-x-2">
@@ -207,10 +210,47 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Clickable Ecosystem Links in Navbar */}
+            <div className="hidden lg:flex items-center space-x-2">
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-sm"
+              >
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  width={16}
+                  height={16}
+                  style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                  className="h-4 w-4 rounded-full object-contain shrink-0"
+                />
+                <span className="font-mono text-[11px]">https://botchain.ai</span>
+              </a>
+
+              <a
+                href="https://scan.botchain.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 hover:text-emerald-300 border border-slate-800 hover:border-emerald-500/40 transition-all shadow-sm"
+              >
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Explorer Logo"
+                  width={16}
+                  height={16}
+                  style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                  className="h-4 w-4 rounded-full object-contain shrink-0"
+                />
+                <span className="font-mono text-[11px]">https://scan.botchain.ai</span>
+              </a>
+            </div>
+
             <div className="hidden md:flex items-center space-x-2 text-xs font-mono text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Bohr Chain #968</span>
+              <span>BOT Chain Mainnet #677</span>
               <span className="text-slate-600">|</span>
               <span className="text-cyan-400">Gas-Only Anchor</span>
             </div>
@@ -225,13 +265,57 @@ export default function Home() {
 
       {/* Hero & Inspection Input */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <section className="text-center max-w-3xl mx-auto space-y-3">
+        <section className="text-center max-w-3xl mx-auto space-y-4">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Who Really Controls Your Contract?
           </h1>
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            SafeOps scrutinizes administrative privileges, role-based access controls, proxy upgrade authority, and multisig governance to reveal hidden single points of failure.
+            SafeOps scrutinizes administrative privileges, role-based access controls, proxy upgrade authority, and multisig governance on BOT Chain to reveal hidden single points of failure.
           </p>
+
+          {/* Official BOT Chain Ecosystem Banner (KPI 3) */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 p-2 sm:p-2.5 bg-slate-900/80 border border-slate-800 rounded-2xl backdrop-blur shadow-lg shadow-black/40">
+            <div className="flex items-center space-x-2 px-2 text-xs font-semibold text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-slate-200">BOT Chain Network:</span>
+            </div>
+
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-950/80 hover:bg-slate-800 text-xs text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 hover:border-cyan-400 transition-all shadow-sm group"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                className="h-4 w-4 rounded-full object-contain group-hover:scale-110 transition-transform shrink-0"
+              />
+              <span className="font-mono font-medium">https://botchain.ai</span>
+              <ExternalLink className="h-3 w-3 text-cyan-400 opacity-70 group-hover:opacity-100" />
+            </a>
+
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-950/80 hover:bg-slate-800 text-xs text-emerald-300 hover:text-emerald-200 border border-emerald-500/30 hover:border-emerald-400 transition-all shadow-sm group"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                className="h-4 w-4 rounded-full object-contain group-hover:scale-110 transition-transform shrink-0"
+              />
+              <span className="font-mono font-medium">https://scan.botchain.ai</span>
+              <ExternalLink className="h-3 w-3 text-emerald-400 opacity-70 group-hover:opacity-100" />
+            </a>
+          </div>
         </section>
 
         {/* Input Card */}
@@ -241,7 +325,7 @@ export default function Home() {
 
           <div className="space-y-4 relative z-10">
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Target Smart Contract Address (Bohr Chain / EVM)
+              Target Smart Contract Address (Botchain Mainnet / EVM)
             </label>
 
             <div className="flex flex-col sm:flex-row items-center gap-3">
@@ -249,7 +333,7 @@ export default function Home() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
                 <input
                   type="text"
-                  placeholder="0x... (e.g. 0x00457ca5D64120aBf883277028B0e8DA1b7A2703)"
+                  placeholder="0x... (e.g. 0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974)"
                   value={inputAddress}
                   onChange={(e) => setInputAddress(e.target.value.trim())}
                   className="w-full pl-12 pr-4 py-3.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 font-mono text-sm focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all"
@@ -826,7 +910,7 @@ export default function Home() {
                               <td className="py-3 px-4">
                                 <div className="flex items-center space-x-2">
                                   <a
-                                    href={`https://scan.bohr.life/address/${adm.address}`}
+                                    href={`${process.env.NEXT_PUBLIC_EXPLORER_URL || "https://scan.botchain.ai"}/address/${adm.address}`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="text-cyan-400 hover:underline flex items-center gap-1"
@@ -931,14 +1015,14 @@ export default function Home() {
                   Anchor Audit Findings On-Chain (SafeOpsRegistry.sol)
                 </h4>
                 <p className="text-xs text-slate-400">
-                  Write the cryptographic report hash and decentralization score ({report.decentralizationScore}/100) to Bohr Chain for permanent auditability.
+                  Write the cryptographic report hash and decentralization score ({report.decentralizationScore}/100) to Botchain for permanent auditability.
                 </p>
                 {anchoredTxHash && (
                   <p className="text-xs text-emerald-400 pt-1 font-mono flex items-center gap-1.5">
                     <CheckCircle2 className="h-3.5 w-3.5" />
-                    Anchored on Bohr! Tx:{" "}
+                    Anchored on Botchain! Tx:{" "}
                     <a
-                      href={`https://scan.bohr.life/tx/${anchoredTxHash}`}
+                      href={`${process.env.NEXT_PUBLIC_EXPLORER_URL || "https://scan.botchain.ai"}/tx/${anchoredTxHash}`}
                       target="_blank"
                       rel="noreferrer"
                       className="underline"
@@ -972,10 +1056,63 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500 font-mono mt-12">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>SafeOps BOT — Contract Admin and Permission Inspector</span>
-          <span>Bohr Chain ID: 968 • Registry: {REGISTRY_ADDRESS.slice(0, 8)}...{REGISTRY_ADDRESS.slice(-6)}</span>
+      <footer className="border-t border-slate-900 bg-slate-950/80 py-8 text-center text-xs text-slate-400 font-mono mt-12 space-y-4">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <img
+              src="/logo.png"
+              alt="SafeOps BOT"
+              width={32}
+              height={32}
+              style={{ width: "32px", height: "32px", maxWidth: "32px", maxHeight: "32px" }}
+              className="h-8 w-8 rounded-xl object-cover border border-cyan-500/30 shrink-0"
+            />
+            <span className="font-semibold text-slate-200">
+              SafeOps BOT — Contract Admin and Permission Inspector
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-xs text-slate-300 hover:text-cyan-400 transition-colors"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                className="h-4 w-4 rounded-full object-contain shrink-0"
+              />
+              <span className="font-mono">https://botchain.ai</span>
+              <ExternalLink className="h-3 w-3 opacity-60" />
+            </a>
+
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-xs text-slate-300 hover:text-emerald-400 transition-colors"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                style={{ width: "16px", height: "16px", minWidth: "16px", minHeight: "16px" }}
+                className="h-4 w-4 rounded-full object-contain shrink-0"
+              />
+              <span className="font-mono">https://scan.botchain.ai</span>
+              <ExternalLink className="h-3 w-3 opacity-60" />
+            </a>
+          </div>
+
+          <span className="text-slate-500">
+            BOT Chain Mainnet (Chain ID: 677) • Registry: {REGISTRY_ADDRESS.slice(0, 8)}...{REGISTRY_ADDRESS.slice(-6)}
+          </span>
         </div>
       </footer>
     </div>

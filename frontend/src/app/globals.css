@@ -40,6 +40,11 @@
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--slate-100);
@@ -113,6 +118,16 @@ body {
 .h-5 { height: 1.25rem; }
 .w-6 { width: 1.5rem; }
 .h-6 { height: 1.5rem; }
+.w-7 { width: 1.75rem; }
+.h-7 { height: 1.75rem; }
+.w-8 { width: 2rem; }
+.h-8 { height: 2rem; }
+.w-11 { width: 2.75rem; }
+.h-11 { height: 2.75rem; }
+.w-12 { width: 3rem; }
+.h-12 { height: 3rem; }
+.object-cover { object-fit: cover; }
+.object-contain { object-fit: contain; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .mt-0\.5 { margin-top: 0.125rem; }
 .mt-1 { margin-top: 0.25rem; }
@@ -305,8 +320,11 @@ body {
 }
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
+.hidden { display: none; }
+
 /* Media queries */
 @media (min-width: 640px) {
+  .sm\:flex { display: flex; }
   .sm\:flex-row { flex-direction: row; }
   .sm\:items-center { align-items: center; }
   .sm\:justify-center { justify-content: center; }
@@ -320,15 +338,15 @@ body {
 
 @media (min-width: 768px) {
   .md\:flex { display: flex; }
+  .md\:block { display: block; }
+  .md\:flex-row { flex-direction: row; }
 }
 
 @media (min-width: 1024px) {
+  .lg\:flex { display: flex; }
+  .lg\:block { display: block; }
   .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
-}
-
-@media (max-width: 639px) {
-  .hidden { display: none; }
 }
 
 /* Custom badges */

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createWalletClient, createPublicClient, http, keccak256, toHex, stringToBytes } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { bohrTestnet } from "@/config/bohr";
+import { botchain } from "@/config/botchain";
 import SafeOpsRegistryAbi from "@/contracts/SafeOpsRegistry.json";
 
 export async function POST(req: NextRequest) {
@@ -21,15 +21,22 @@ export async function POST(req: NextRequest) {
     const formattedKey = (privateKey.startsWith("0x") ? privateKey : `0x${privateKey}`) as `0x${string}`;
     const account = privateKeyToAccount(formattedKey);
 
+    const rpc = (process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.botchain.ai").replace(/\/+$/, "");
+    const transportConfig = {
+      timeout: 30_000,
+      retryCount: 3,
+      retryDelay: 1000,
+    };
+
     const client = createWalletClient({
       account,
-      chain: bohrTestnet,
-      transport: http(process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.bohr.life"),
+      chain: botchain,
+      transport: http(rpc, transportConfig),
     });
 
     const publicClient = createPublicClient({
-      chain: bohrTestnet,
-      transport: http(process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.bohr.life"),
+      chain: botchain,
+      transport: http(rpc, transportConfig),
     });
 
     const reportJson = JSON.stringify(report);
@@ -59,7 +66,7 @@ export async function POST(req: NextRequest) {
       success: true,
       transactionHash: hash,
       reportHash,
-      explorerUrl: `${process.env.NEXT_PUBLIC_EXPLORER_URL || "https://scan.bohr.life"}/tx/${hash}`,
+      explorerUrl: `${process.env.NEXT_PUBLIC_EXPLORER_URL || "https://scan.botchain.ai"}/tx/${hash}`,
     });
   } catch (error: any) {
     console.error("Failed to anchor report:", error);

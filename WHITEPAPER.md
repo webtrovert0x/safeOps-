@@ -4,9 +4,9 @@
 ![SafeOps BOT Logo](assets/logo.png)
 
 **Document Version:** 1.0.0  
-**Status:** Mainnet / Testnet Deployment Active  
-**Target Chain:** Bohr Chain (Chain ID: `968`, Native Token: `BOT`)  
-**Active Contract Address:** [`0x00457ca5D64120aBf883277028B0e8DA1b7A2703`](https://scan.bohr.life/address/0x00457ca5D64120aBf883277028B0e8DA1b7A2703)  
+**Status:** Mainnet Deployment Active  
+**Target Chain:** Botchain Mainnet (Chain ID: `677`, Native Token: `BOT`)  
+**Active Contract Address:** [`0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974`](https://scan.botchain.ai/address/0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974)  
 **Authors:** SafeOps Core Protocol Team  
 
 ---
@@ -15,7 +15,7 @@
 
 Smart contracts are often celebrated for being trustless and immutable, yet a substantial majority of modern decentralized finance (DeFi) protocols and token ecosystems retain privileged administrative backdoors. These include single-key proxy upgrade authority, arbitrary token minting, fee diversion, and emergency pause mechanisms. While standard smart contract vulnerability scanners focus on syntactic flaws such as reentrancy or integer overflows, they frequently overlook the **systemic centralization risk** posed by the accounts holding the administrative keys.
 
-**SafeOps BOT** is a purpose-built on-chain audit and inspection protocol designed to examine **who controls a contract and what those administrators are empowered to do**. By interrogating low-level EVM storage slots, bytecode function dispatchers, role-based access control mappings, and controller account architectures (distinguishing single Externally Owned Accounts from Gnosis/Safe multisigs and Timelock controllers), SafeOps exposes hidden centralization bottlenecks and flags critical governance discrepancies. Inspection records and cryptographic audit digests are permanently anchored on Bohr Chain via `SafeOpsRegistry.sol` under a gas-only user model.
+**SafeOps BOT** is a purpose-built on-chain audit and inspection protocol designed to examine **who controls a contract and what those administrators are empowered to do**. By interrogating low-level EVM storage slots, bytecode function dispatchers, role-based access control mappings, and controller account architectures (distinguishing single Externally Owned Accounts from Gnosis/Safe multisigs and Timelock controllers), SafeOps exposes hidden centralization bottlenecks and flags critical governance discrepancies. Inspection records and cryptographic audit digests are permanently anchored on Botchain Mainnet via `SafeOpsRegistry.sol` under a gas-only user model.
 
 ---
 
@@ -120,7 +120,7 @@ Smart contracts are implemented in diverse languages and custom architectures. S
 
 ## 4. On-Chain Registry: `SafeOpsRegistry.sol`
 
-`SafeOpsRegistry.sol` anchors permission analyses on Bohr Chain, creating a verifiable and censorship-resistant audit trail.
+`SafeOpsRegistry.sol` anchors permission analyses on Botchain, creating a verifiable and censorship-resistant audit trail.
 
 ### 4.1 Payment Model: Gas-Only
 To democratize security intelligence, SafeOps charges **no protocol fee**. Users pay standard network gas fees only to submit check requests or anchor reports.
@@ -173,24 +173,24 @@ If an inspected protocol displays governance branding while delegating proxy upg
 
 ---
 
-## 6. Bohr Chain Deployment Specifications
+## 6. Botchain Mainnet Deployment Specifications
 
 | Parameter | Value |
 | :--- | :--- |
-| **Network** | Bohr Testnet |
-| **Chain ID** | `968` |
+| **Network** | Botchain Mainnet |
+| **Chain ID** | `677` |
 | **Native Currency** | `BOT` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | `https://scan.bohr.life` |
-| **SafeOpsRegistry Contract** | `0x00457ca5D64120aBf883277028B0e8DA1b7A2703` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Block Explorer** | `https://scan.botchain.ai` |
+| **SafeOpsRegistry Contract** | `0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974` |
 
 ---
 
 ## 7. Roadmap & Future Work
 
-1. **Phase 1 (Complete):** Core permission inspection engine, ERC-1967 storage slot analysis, Safe multisig/timelock detection, Bohr deployment, and Next.js command center UI.
+1. **Phase 1 (Complete):** Core permission inspection engine, ERC-1967 storage slot analysis, Safe multisig/timelock detection, Botchain deployment, and Next.js command center UI.
 2. **Phase 2:** Historical event indexing to track permission alterations over time (`OwnershipTransferred`, `RoleGranted`, `RoleRevoked`, `Upgraded`).
-3. **Phase 3:** Automated cross-chain scanning (Ethereum, Arbitrum, Base, Optimism) with unified anchoring to Bohr Chain.
+3. **Phase 3:** Automated cross-chain scanning (Ethereum, Arbitrum, Base, Optimism) with unified anchoring to Botchain.
 4. **Phase 4:** Deep integration with VerifyBOT for comprehensive 360-degree smart contract security auditing.
 
 ---
@@ -200,4 +200,4 @@ If an inspected protocol displays governance branding while delegating proxy upg
 Decentralization is not a marketing buzzword; it is an on-chain reality that can be forensically measured. By inspecting proxy implementation storage, administrative roles, emergency pause levers, and multisig thresholds, **SafeOps BOT** brings transparency to smart contract custody and empowers users, investors, and security researchers to distinguish genuine decentralization from centralized control.
 
 ---
-*SafeOps BOT is open-source and deployed on Bohr Chain.*
+*SafeOps BOT is open-source and deployed on Botchain.*

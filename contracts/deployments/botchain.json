@@ -1,0 +1,12 @@
+{
+  "network": "botchain",
+  "chainId": 677,
+  "address": "0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974",
+  "transactionHash": "0x26364b0ce2b718c162432b07b6357520192a50c34841c3c081ded0d16066df3c",
+  "blockNumber": 28503053,
+  "deployer": "0x55DA37AbbF8C9141adA4Dd1C2eF7211c0483eC16",
+  "gasUsed": "836769",
+  "deploymentCostBOT": "0.01673538",
+  "deployedAt": "2026-10-30T12:02:10.266Z",
+  "explorerUrl": "https://scan.botchain.ai/address/0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974"
+}

@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <b>Contract Admin, Access Control, and Permission Inspector for Bohr Chain & EVM</b><br />
+  <b>Contract Admin, Access Control, and Permission Inspector for Botchain & EVM</b><br />
   <a href="WHITEPAPER.md">📖 Read the Technical Whitepaper</a> • 
-  <a href="https://scan.bohr.life/address/0x00457ca5D64120aBf883277028B0e8DA1b7A2703">🌐 BohrScan Contract</a>
+  <a href="https://scan.botchain.ai/address/0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974">🌐 BotchainScan Contract</a>
 </p>
 
 ---
@@ -44,16 +44,16 @@ SafeOps BOT investigates **who controls a smart contract and what those administ
 
 ## 🌐 On-Chain Registry Deployment
 
-- **Network**: Bohr Testnet
-- **Chain ID**: `968`
+- **Network**: Botchain Mainnet
+- **Chain ID**: `677`
 - **Native Token**: `BOT`
-- **RPC Endpoint**: `https://rpc.bohr.life`
-- **Block Explorer**: `https://scan.bohr.life`
+- **RPC Endpoint**: `https://rpc.botchain.ai`
+- **Block Explorer**: `https://scan.botchain.ai`
 - **Deployed SafeOpsRegistry Contract**:
   ```
-  0x00457ca5D64120aBf883277028B0e8DA1b7A2703
+  0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974
   ```
-  *(Verified on BohrScan: `https://scan.bohr.life/address/0x00457ca5D64120aBf883277028B0e8DA1b7A2703`)*
+  *(Verified on BotchainScan: `https://scan.botchain.ai/address/0x098D204F9F93f855a15Ea72D5d85b7df1FFd2974`)*
 
 ---
 
@@ -65,10 +65,10 @@ safeOps BOt/
 │   ├── contracts/
 │   │   └── SafeOpsRegistry.sol       # Gas-only check record & anchor registry
 │   ├── scripts/
-│   │   └── deploy.js                 # Automated Bohr deployment script
+│   │   └── deploy.js                 # Automated Botchain deployment script
 │   ├── test/
 │   │   └── SafeOpsRegistry.test.js   # 100% passing test suite
-│   ├── hardhat.config.js             # Hardhat network config (Bohr & local)
+│   ├── hardhat.config.js             # Hardhat network config (Botchain & local)
 │   └── package.json
 ├── frontend/
 │   ├── src/
@@ -80,7 +80,7 @@ safeOps BOt/
 │   │   │   ├── page.tsx                   # Command Center UI & visual topology
 │   │   │   └── globals.css                # Pure Vanilla CSS design system
 │   │   ├── config/
-│   │   │   └── bohr.ts                    # Viem chain definition
+│   │   │   └── botchain.ts                # Viem chain definition
 │   │   ├── context/
 │   │   │   └── Web3Provider.tsx           # Reown AppKit + Wagmi provider
 │   │   ├── contracts/
@@ -99,7 +99,7 @@ safeOps BOt/
 ```bash
 cd contracts
 npx hardhat test
-npx hardhat run scripts/deploy.js --network bohr
+npx hardhat run scripts/deploy.js --network botchain
 ```
 
 ### Frontend App
